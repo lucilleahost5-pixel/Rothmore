@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A 90-Day Plan for Rothmore Property — Jude Mike M. Vicentillo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A2540;
+    --ink-soft: #14365C;
+    --cream: #FAF7F2;
+    --cream-deep: #F2EDE2;
+    --line: #DDD4BF;
+    --gold: #B8924A;
+    --gold-soft: #D4B57A;
+    --text: #1A1A1A;
+    --muted: #6B6B6B;
+    --accent-bg: #FFF9EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 64px;
+    background: var(--cream);
+  }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px;
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle at top right, var(--gold-soft) 0%, transparent 60%);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .cover-top span:last-child { color: var(--muted); font-weight: 500; }
+
+  .cover-main {
+    margin-top: 80px;
+  }
+
+  .eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .cover-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  .signature-block .name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .signature-block .role {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .seal {
+    width: 80px; height: 80px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .seal span:first-child {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section {
+    padding: 96px 64px;
+    max-width: 880px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+  }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 40px;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .section-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  p { font-size: 16px; color: var(--text); margin-bottom: 18px; max-width: 720px; }
+
+  /* ---------- THE PROMISE / EXEC SUMMARY ---------- */
+  .promise-card {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 56px 56px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .promise-card::before {
+    content: '"';
+    position: absolute;
+    top: 8px; left: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 96px;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .promise-card p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--cream);
+    font-weight: 300;
+    max-width: none;
+    margin-bottom: 0;
+    padding-left: 48px;
+  }
+
+  .promise-card p strong {
+    color: var(--gold-soft);
+    font-weight: 500;
+  }
+
+  /* ---------- UNDERSTANDING ---------- */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 32px;
+  }
+
+  .pillar {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .pillar:last-child { border-bottom: none; }
+
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .pillar-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar-content p { font-size: 15.5px; color: var(--text); margin-bottom: 0; }
+
+  /* ---------- 90-DAY PLAN ---------- */
+  .phase {
+    margin: 40px 0 56px;
+    background: var(--cream-deep);
+    padding: 48px 48px;
+    border-left: 4px solid var(--gold);
+    position: relative;
+  }
+
+  .phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .phase-tag {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .phase-days {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .phase h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .phase-desc {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 17px;
+    margin-bottom: 24px;
+    font-weight: 300;
+    max-width: 100%;
+  }
+
+  .deliverables {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .deliverables li {
+    padding: 14px 0 14px 32px;
+    border-bottom: 1px solid rgba(184, 146, 74, 0.15);
+    font-size: 15.5px;
+    color: var(--text);
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .deliverables li:last-child { border-bottom: none; }
+
+  .deliverables li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .deliverables li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------- BEFORE / AFTER ---------- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 32px;
+    border: 1px solid var(--line);
+  }
+
+  .compare-col { padding: 32px 32px 28px; }
+
+  .compare-col.before {
+    background: var(--cream-deep);
+    border-right: 1px solid var(--line);
+  }
+
+  .compare-col.after { background: var(--ink); color: var(--cream); }
+
+  .compare-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+
+  .compare-col.before .compare-label { color: var(--muted); }
+  .compare-col.after .compare-label { color: var(--gold-soft); }
+
+  .compare-col h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .compare-col.after h3 { color: var(--cream); }
+
+  .compare-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .compare-col li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    padding: 10px 0;
+    border-bottom: 1px solid;
+  }
+
+  .compare-col.before li { border-color: var(--line); color: var(--text); }
+  .compare-col.after li { border-color: rgba(212, 181, 122, 0.2); color: var(--cream); }
+
+  .compare-col li:last-child { border-bottom: none; }
+
+  /* ---------- PRINCIPLES ---------- */
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 48px;
+    margin-top: 32px;
+  }
+
+  .principle {
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .principle h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .principle p { font-size: 14.5px; color: var(--text); line-height: 1.6; margin-bottom: 0; }
+
+  /* ---------- TOOLS ---------- */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 32px;
+    border: 1px solid var(--line);
+  }
+
+  .tool {
+    background: var(--cream);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .tool-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .tool-cat {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- BEYOND ---------- */
+  .beyond {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    padding: 56px 48px;
+    margin-top: 32px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+  }
+
+  .beyond h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .beyond p { font-size: 16px; line-height: 1.7; }
+
+  /* ---------- CLOSING ---------- */
+  .closing {
+    text-align: center;
+    padding: 80px 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .closing-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .closing-quote em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .signoff {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 32px;
+    font-weight: 500;
+  }
+
+  .contact {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  /* ---------- DECORATIVE ---------- */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 20px;
+    margin: 48px 0;
+    letter-spacing: 1em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px) {
+    .page, .section, .cover { padding: 48px 28px; }
+    .compare { grid-template-columns: 1fr; }
+    .compare-col.before { border-right: none; border-bottom: 1px solid var(--line); }
+    .principles { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .phase { padding: 32px 24px; }
+    .promise-card { padding: 40px 32px; }
+    .promise-card p { padding-left: 32px; font-size: 22px; }
+    .pillar { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { background: white; }
+    .page, .section, .cover { background: white; padding: 48px 40px; max-width: 100%; }
+    .section { page-break-before: always; border-top: none; }
+    .cover { min-height: auto; page-break-after: always; }
+    .promise-card { page-break-inside: avoid; }
+    .phase { page-break-inside: avoid; }
+    .compare { page-break-inside: avoid; }
+    .beyond { page-break-inside: avoid; }
+    .closing { page-break-before: always; }
+    @page { margin: 1.5cm; size: A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="cover-top">
+    <span>Rothmore Property × J. Vicentillo</span>
+    <span>Confidential · Proposal</span>
+  </div>
+
+  <div class="cover-main">
+    <div class="eyebrow">A 90-Day Operational Plan</div>
+    <h1 class="cover-title">The operational hub<br><em>your team has been waiting for.</em></h1>
+    <p class="cover-sub">A proposal for the Virtual Assistant role at Rothmore Property — what I'll deliver in the first 30, 60, and 90 days, and why I'm the operator you want behind the scenes.</p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="signature-block">
+      <div class="name">Jude Mike M. Vicentillo</div>
+      <div class="role">Virtual Assistant · Caloocan, Philippines</div>
+    </div>
+    <div class="seal">
+      <span>JV</span>
+      <span>2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROMISE ============ -->
+<section class="section">
+  <div class="section-num">01 — The Promise</div>
+  <h2 class="section-title">If you hire me, here is what changes <em>by the end of week one.</em></h2>
+
+  <div class="promise-card">
+    <p>The CEO inbox stops being a battlefield. The CRM stops drifting. Deals stop slipping. <strong>Within ninety days, you'll have a back office that runs without anyone needing to ask whether it's running</strong> — because someone is finally treating it as the asset it is.</p>
+  </div>
+
+  <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: var(--ink-soft); max-width: 720px; margin-top: 32px; font-weight: 300;">This document is not a CV in disguise. It's a plan. The CV tells you where I've been; this tells you where we'll be at day 30, day 60, and day 90 — and why the rest of this year will be different.</p>
+</section>
+
+<!-- ============ UNDERSTANDING ============ -->
+<section class="section">
+  <div class="section-num">02 — Understanding Your Operation</div>
+  <h2 class="section-title">Before I propose changes, here is what I see <em>about your business.</em></h2>
+  <p class="section-intro">Anyone can read a job description. Fewer take the time to map the operation underneath it. These are the realities I've taken from your post and your website — and they shape every commitment that follows.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-content">
+        <h3>You're not running one business. You're running four.</h3>
+        <p>UK new-build sales. Dubai off-plan. CasaCity lettings. Cross-sell into mortgages, solicitors, valuations, snagging, and renovations. Each has its own pipeline, its own paperwork rhythm, its own stakeholders. Without a tight operational hub, the seams between them are exactly where deals leak.</p>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-content">
+        <h3>Speed and accuracy are in tension — and you need both.</h3>
+        <p>A property consultancy moves at the pace of the slowest stakeholder: a solicitor who hasn't replied, a developer who's late on a stock list, a CRM record that's missing a phone number. The role you're hiring for is the function that closes those gaps before they become escalations.</p>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-content">
+        <h3>The CEO's time is your scarcest resource.</h3>
+        <p>Your post makes this clear: nothing should fall through the cracks, but the CEO shouldn't be the one watching for them either. The job is to be a filter — a smart one — so the CEO sees what genuinely needs them and nothing else.</p>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <div class="pillar-content">
+        <h3>You're scaling, and the back office must scale faster.</h3>
+        <p>Two consecutive International Property Awards, expansion into Dubai, a growing introducer network. Growth exposes operational weakness fastest. The role I'm proposing isn't to run alongside that growth — it's to get ahead of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 90-DAY PLAN ============ -->
+<section class="section">
+  <div class="section-num">03 — The 90-Day Plan</div>
+  <h2 class="section-title">A clear path from day one. <em>Measured, not promised.</em></h2>
+  <p class="section-intro">Here is exactly what I commit to delivering across the first three months. Not aspirations — concrete outputs you can hold me to in our 30-day check-in.</p>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-tag">Phase One · Foundation</span>
+      <span class="phase-days">Days 1 — 30</span>
+    </div>
+    <h3>Learn the operation. Stabilise the basics.</h3>
+    <p class="phase-desc">The first month is not for making changes. It is for understanding the business well enough to make the right ones in months two and three.</p>
+    <ul class="deliverables">
+      <li><strong>CEO inbox under control.</strong> Triage system in place. A consistent daily brief landing before the UK day starts so leadership opens the laptop to clarity, not chaos.</li>
+      <li><strong>Calendar and meeting hygiene.</strong> Every meeting has an agenda or it doesn't happen. Buffers between calls. Travel and accommodation arrangements handled without prompting.</li>
+      <li><strong>HubSpot audit complete.</strong> A written one-page report of what's clean, what's drifting, what's missing — and a recommendation on what to fix first.</li>
+      <li><strong>Portfolio map.</strong> A single-source overview of all 60+ UK developments and the Dubai portfolio: status, key contacts, last-updated dates, where the data lives.</li>
+      <li><strong>Stakeholder directory.</strong> Developer partners, agents, introducers, solicitors — names, roles, preferred contact, and the relationship history I can find. So I'm useful from week three.</li>
+      <li><strong>Process gaps logged.</strong> A running list of frictions I've spotted, kept private until I have something specific to recommend.</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-tag">Phase Two · Systems</span>
+      <span class="phase-days">Days 31 — 60</span>
+    </div>
+    <h3>Tighten the back office. Take work off the team.</h3>
+    <p class="phase-desc">By day 31, the inbox and calendar should be running without you thinking about them. Now we move to the operational layer underneath.</p>
+    <ul class="deliverables">
+      <li><strong>Property portal accuracy.</strong> Pricing, availability, unit details, and media verified against developer source data on a weekly cadence. Rightmove and other listings reflect reality, not a snapshot from three weeks ago.</li>
+      <li><strong>HubSpot brought up to standard.</strong> Pipeline stages applied consistently across active deals. Contact records deduplicated and tagged. Reporting dashboards rebuilt to show leadership what they actually need to see.</li>
+      <li><strong>Document templates audited and refreshed.</strong> Reservation forms, agency agreements, commission letters, sales memoranda, investment brochures, one-pagers — current branding, current language, version-controlled.</li>
+      <li><strong>Deal progression tracker live.</strong> Every active sale visible in one view: stage, next action, owner, blocker, last contact. The CEO can see the entire pipeline in 60 seconds.</li>
+      <li><strong>Commission log reconciled.</strong> Outstanding invoices identified, follow-ups initiated, the log brought to a clean baseline so we never have to ask "did this get paid?" again.</li>
+      <li><strong>Onboarding flow documented.</strong> A repeatable checklist for bringing on new agents and introducers, so the next ten join the same way as the first.</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-tag">Phase Three · Leverage</span>
+      <span class="phase-days">Days 61 — 90</span>
+    </div>
+    <h3>Move from operator to multiplier.</h3>
+    <p class="phase-desc">By day 60, the basics run themselves. The final phase is about creating leverage — making each member of the team measurably more productive.</p>
+    <ul class="deliverables">
+      <li><strong>Weekly leadership report standardised.</strong> Active deals, pipeline movement, outstanding commissions, stakeholder activity, risks — delivered every Monday before the UK day starts.</li>
+      <li><strong>Monthly business review prepared.</strong> A clean, narrative-led summary the CEO can take into investor or partner conversations without rebuilding from scratch.</li>
+      <li><strong>Shared file system reorganised.</strong> Development folders, marketing assets, signed agreements, investor documents — locatable in three clicks or fewer, by anyone on the team.</li>
+      <li><strong>AI-assisted drafting workflow established.</strong> Templates and prompts that let me produce first drafts of correspondence in minutes, not hours, while preserving the CEO's voice.</li>
+      <li><strong>First proactive recommendations delivered.</strong> Three to five specific, costed suggestions for tightening the operation further — based on what I've actually observed, not what looked good on the job description.</li>
+      <li><strong>Day 90 check-in.</strong> Honest review against this plan. What worked. What didn't. What we change next.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="section">
+  <div class="section-num">04 — What This Looks Like, Concretely</div>
+  <h2 class="section-title">A before-and-after of <em>your CEO's day.</em></h2>
+  <p class="section-intro">The clearest way to describe what changes is to describe what stops happening.</p>
+
+  <div class="compare">
+    <div class="compare-col before">
+      <div class="compare-label">Before · Today</div>
+      <h3>The cost of operational drag</h3>
+      <ul>
+        <li>Inbox at 80+ unread by 9am UK. Anything urgent buried under newsletters and CVs.</li>
+        <li>Half the morning lost re-reading email threads to remember what's outstanding.</li>
+        <li>Stock list arrives from a developer; nobody updates the portal for three days.</li>
+        <li>Solicitor goes silent on a deal; nobody chases until the client notices first.</li>
+        <li>HubSpot stages don't match reality. Reporting becomes a guessing exercise.</li>
+        <li>Commission log is a series of "I think we got paid for that one."</li>
+        <li>The CEO is the bottleneck on every decision because the CEO is the only one with the full picture.</li>
+      </ul>
+    </div>
+
+    <div class="compare-col after">
+      <div class="compare-label">After · 90 Days In</div>
+      <h3>The cost of doing it right</h3>
+      <ul>
+        <li>A morning brief in the inbox before the UK day starts: what needs you, what's been handled, what to expect.</li>
+        <li>Calendar is clean. Buffers are real. Meetings have agendas or they don't happen.</li>
+        <li>Stock lists are processed within hours. Portals reflect reality, not last week's version.</li>
+        <li>Solicitors and developers know there's someone who chases. Deals move because we expect them to.</li>
+        <li>HubSpot pipeline is a true picture. The dashboard is the meeting, not a debate about the meeting.</li>
+        <li>Commission log is reconciled weekly. Nothing is ever a surprise.</li>
+        <li>The CEO becomes the strategist again — because operations no longer needs the CEO to function.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="section">
+  <div class="section-num">05 — How I Operate</div>
+  <h2 class="section-title">A short manifesto, so you know <em>what you're hiring.</em></h2>
+  <p class="section-intro">Process matters. So does temperament. These are the principles I bring to the work, in plain language.</p>
+
+  <div class="principles">
+    <div class="principle">
+      <h3>Confidentiality is binary.</h3>
+      <p>Either everything is treated as confidential by default, or nothing meaningfully is. I default to silence unless I have explicit permission to share. The CEO's inbox is a vault, not a notebook.</p>
+    </div>
+
+    <div class="principle">
+      <h3>Acknowledge before action.</h3>
+      <p>If something needs an hour, I'll send a thirty-second acknowledgement first. People should never wonder whether their message reached me. That single habit removes the majority of follow-up friction.</p>
+    </div>
+
+    <div class="principle">
+      <h3>Catch errors before they ship.</h3>
+      <p>The job is not to be busy. The job is to be the last set of eyes before something leaves the building. I treat the small voice that says "this doesn't feel right" as the most important signal in my workflow.</p>
+    </div>
+
+    <div class="principle">
+      <h3>AI as a co-pilot, never a replacement.</h3>
+      <p>I use modern tools daily — for first drafts, summarising long threads, structuring messy data. I never let AI send unsupervised, and I never paste confidential business information into public tools.</p>
+    </div>
+
+    <div class="principle">
+      <h3>Document as I go.</h3>
+      <p>If I do something twice, the third time has a checklist. If I do it five times, it has a template. The goal is that someone could step into my role and not lose two weeks figuring out where the bodies are buried.</p>
+    </div>
+
+    <div class="principle">
+      <h3>Surface problems early.</h3>
+      <p>I'd rather flag at hour two that something will take six hours, than stay silent and miss a deadline at hour five. Calm honesty saves more time than heroic effort.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section class="section">
+  <div class="section-num">06 — Tools I Bring, Day One</div>
+  <h2 class="section-title">No ramp on the modern stack. <em>I already work this way.</em></h2>
+  <p class="section-intro">A short list of what I use fluently. Anything Rothmore-specific I don't yet know — Alto, your DocuSign templates, your branded asset library — I'd come up the curve on within the first two weeks.</p>
+
+  <div class="tools-grid">
+    <div class="tool"><div class="tool-name">HubSpot</div><div class="tool-cat">CRM</div></div>
+    <div class="tool"><div class="tool-name">Microsoft 365</div><div class="tool-cat">Office Suite</div></div>
+    <div class="tool"><div class="tool-name">Google Workspace</div><div class="tool-cat">Collaboration</div></div>
+    <div class="tool"><div class="tool-name">DocuSign</div><div class="tool-cat">Signatures</div></div>
+    <div class="tool"><div class="tool-name">Zendesk</div><div class="tool-cat">Support CRM</div></div>
+    <div class="tool"><div class="tool-name">Asana · Trello</div><div class="tool-cat">Project Mgmt</div></div>
+    <div class="tool"><div class="tool-name">Power BI · Tableau</div><div class="tool-cat">Reporting</div></div>
+    <div class="tool"><div class="tool-name">Excel · Sheets</div><div class="tool-cat">Analysis</div></div>
+    <div class="tool"><div class="tool-name">AI Drafting Tools</div><div class="tool-cat">Productivity</div></div>
+  </div>
+</section>
+
+<!-- ============ BEYOND ============ -->
+<section class="section">
+  <div class="section-num">07 — Beyond Day 90</div>
+  <h2 class="section-title">A long-term view, not a contractor's view.</h2>
+
+  <div class="beyond">
+    <h3>Where I see this role going.</h3>
+    <p>I'm not applying for a task seat. The reason this proposal exists at all is that I want this to be a long-term commitment — and I think the role itself wants to grow. By month six, the natural evolution is to take on more of the operational decision-making: process design, vendor coordination, perhaps light project management on the Dubai side as it scales. By the end of year one, I'd hope to be operating as the de facto operations lead for the back office, freeing the CEO entirely from the running of it.</p>
+    <p style="margin-bottom: 0;">That's the path I'd commit to. Not because it's promised, but because it's where the work goes when it's done well — and I want to be the person doing it.</p>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="ornament">· · ·</div>
+
+  <p class="closing-quote">"You operate as a trusted extension of the business, not just task support."<br>— <em>From your job description.</em></p>
+
+  <p style="font-family: 'Fraunces', serif; font-size: 19px; color: var(--ink-soft); max-width: 600px; margin: 0 auto; line-height: 1.6; font-style: italic; font-weight: 300;">That sentence is the reason I wrote this proposal. Most candidates will read it and nod. I read it and built a plan. The next step is yours — and I'd be glad to walk through any part of this in detail.</p>
+
+  <div class="signoff">— Jude Mike M. Vicentillo</div>
+  <div class="contact">
+    <a href="mailto:jhudemikev@gmail.com">jhudemikev@gmail.com</a>
+    &nbsp; · &nbsp;
+    +63 951 875 7753
+    &nbsp; · &nbsp;
+    Caloocan, Philippines
+  </div>
+
+  <div class="ornament" style="margin-top: 56px;">· · ·</div>
+</section>
+
+</body>
+</html>
