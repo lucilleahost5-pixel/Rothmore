@@ -3,855 +3,1951 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A 90-Day Plan for Rothmore Property — Jude Mike M. Vicentillo</title>
+<title>An Operator's Proposal — Jude Vicentillo for Rothmore Property</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0A2540;
-    --ink-soft: #14365C;
-    --cream: #FAF7F2;
-    --cream-deep: #F2EDE2;
-    --line: #DDD4BF;
-    --gold: #B8924A;
-    --gold-soft: #D4B57A;
-    --text: #1A1A1A;
-    --muted: #6B6B6B;
-    --accent-bg: #FFF9EE;
+:root {
+  --navy: #051D54;
+  --navy-deep: #03133A;
+  --navy-soft: #1A3470;
+  --cream: #FAF8F3;
+  --cream-deep: #F2EDDF;
+  --cream-warm: #EDE5D0;
+  --gold: #C9A961;
+  --gold-bright: #E0C485;
+  --gold-dim: #8F7236;
+  --line: #DDD2B5;
+  --line-faint: #E8DFC8;
+  --text: #1A1A1A;
+  --muted: #6B6B6B;
+  --white: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============ READING PROGRESS ============ */
+.reading-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* ============ FLOATING NAV DOTS ============ */
+.scroll-nav {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.scroll-dot:hover { background: var(--gold); transform: scale(1.4); }
+
+.scroll-dot.active {
+  background: var(--gold);
+  transform: scale(1.5);
+}
+
+.scroll-dot.dark { background: rgba(255,255,255,0.2); }
+.scroll-dot.dark.active { background: var(--gold); }
+
+.scroll-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  font-weight: 600;
+}
+
+.scroll-dot:hover::after { opacity: 1; }
+
+/* ============ FADE-IN ON SCROLL ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.2,0.7,0.2,1), transform 1s cubic-bezier(0.2,0.7,0.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-2 { transition-delay: 0.15s; }
+.reveal-3 { transition-delay: 0.3s; }
+.reveal-4 { transition-delay: 0.45s; }
+.reveal-5 { transition-delay: 0.6s; }
+
+/* ============ SHARED ============ */
+.eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold-dim);
+  margin-bottom: 32px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+}
+
+.dark-section .eyebrow { color: var(--gold); }
+
+.section-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14vw;
+  line-height: 0.8;
+  color: var(--cream-deep);
+  position: absolute;
+  top: -3vw;
+  right: 4vw;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark-section .section-num {
+  color: var(--navy-soft);
+  opacity: 0.4;
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 48px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -300px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,97,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -400px;
+  left: -300px;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,52,112,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(201,169,97,0.25);
+  padding-bottom: 24px;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-mark {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.hero-mark em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.hero-meta {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.hero-center {
+  position: relative;
+  z-index: 5;
+  margin: auto 0;
+  max-width: 1200px;
+}
+
+.hero-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(64px, 11vw, 180px);
+  line-height: 0.85;
+  font-weight: 200;
+  letter-spacing: -0.035em;
+  margin-bottom: 48px;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.hero-tag {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.45;
+  font-weight: 300;
+  color: rgba(250,248,243,0.8);
+  max-width: 720px;
+}
+
+.hero-tag strong {
+  color: var(--gold-bright);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-sig .name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.hero-sig .where {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.hero-scroll {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.hero-scroll .arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* ============ BIG STATEMENT (between sections) ============ */
+.statement-spread {
+  padding: 200px 64px;
+  background: var(--navy);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.statement-spread::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(201,169,97,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(26,52,112,0.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.statement-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+
+.statement-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 56px;
+}
+
+.statement-text {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(42px, 6.5vw, 100px);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+
+.statement-text em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.statement-text strong {
+  font-weight: 600;
+  color: var(--gold-bright);
+}
+
+.statement-attribution {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 64px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.statement-attribution::before, .statement-attribution::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+/* ============ SECTION CONTAINER ============ */
+.section {
+  position: relative;
+  padding: 160px 64px;
+  overflow: hidden;
+}
+
+.section.dark-section {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.section.cream-deep {
+  background: var(--cream-deep);
+}
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(46px, 6.5vw, 96px);
+  line-height: 0.98;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  margin-bottom: 48px;
+  max-width: 1100px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.section-lede {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.45;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 800px;
+  margin-bottom: 64px;
+}
+
+.dark-section .section-lede { color: rgba(250,248,243,0.7); }
+
+/* ============ EDITORIAL TWO-COLUMN ============ */
+.editorial-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.col-meta {
+  position: sticky;
+  top: 80px;
+}
+
+.col-meta-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.dark-section .col-meta-label { color: var(--gold); }
+
+.col-meta-roles {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.dark-section .col-meta-roles { border-top-color: rgba(201,169,97,0.25); }
+
+.role-entry {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-faint);
+}
+
+.dark-section .role-entry { border-bottom-color: rgba(201,169,97,0.15); }
+
+.role-entry:last-child { border-bottom: none; }
+
+.role-when {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dark-section .role-when { color: var(--gold); }
+
+.role-where {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.role-what {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dark-section .role-what { color: rgba(250,248,243,0.6); }
+
+.col-prose .lede-para {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.4;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 32px;
+  letter-spacing: -0.005em;
+}
+
+.col-prose p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.dark-section .col-prose p { color: rgba(250,248,243,0.85); }
+
+.col-prose .signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.col-prose .signature::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ============ STATS RIBBON ============ */
+.stats-ribbon {
+  background: var(--cream-warm);
+  padding: 80px 64px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-ribbon-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-block {
+  padding: 0 32px;
+  border-right: 1px solid var(--line);
+  text-align: left;
+}
+
+.stat-block:first-child { padding-left: 0; }
+.stat-block:last-child { border-right: none; padding-right: 0; }
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(56px, 6vw, 88px);
+  font-weight: 200;
+  color: var(--gold-dim);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.stat-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+.stat-context {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+/* ============ FOUNDER QUOTE ============ */
+.founder-quote {
+  background: var(--cream);
+  padding: 120px 64px;
+  text-align: center;
+}
+
+.fq-inner { max-width: 1100px; margin: 0 auto; }
+
+.fq-mark {
+  font-family: 'Fraunces', serif;
+  font-size: 200px;
+  line-height: 0.6;
+  color: var(--gold);
+  opacity: 0.4;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: -40px;
+}
+
+.fq-text {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.3;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin-bottom: 48px;
+}
+
+.fq-author {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fq-author::before, .fq-author::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.fq-author-name {
+  color: var(--navy);
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin-top: 4px;
+}
+
+/* ============ NUMBERED PILLAR LIST ============ */
+.pillars-stack {
+  margin-top: 16px;
+}
+
+.pillar-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.dark-section .pillar-item { border-bottom-color: rgba(201,169,97,0.2); }
+
+.pillar-item:last-child { border-bottom: none; }
+
+.pillar-number {
+  font-family: 'Fraunces', serif;
+  font-size: 100px;
+  font-weight: 200;
+  color: var(--gold);
+  line-height: 0.85;
+  font-style: italic;
+  letter-spacing: -0.04em;
+}
+
+.pillar-content {
+  padding-top: 12px;
+}
+
+.pillar-content h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 2.8vw, 36px);
+  font-weight: 400;
+  margin-bottom: 16px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  max-width: 800px;
+}
+
+.pillar-content p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 760px;
+}
+
+.dark-section .pillar-content p { color: rgba(250,248,243,0.78); }
+
+.pillar-content em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--gold-dim);
+  font-weight: 500;
+}
+
+.dark-section .pillar-content em { color: var(--gold); }
+
+/* ============ THE PLAN ARC ============ */
+.plan-section {
+  padding: 0;
+}
+
+.plan-intro {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 200px 64px;
+  text-align: center;
+}
+
+.plan-intro-inner { max-width: 1100px; margin: 0 auto; }
+
+.plan-intro-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 48px;
+}
+
+.plan-intro-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(56px, 8vw, 130px);
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin-bottom: 48px;
+}
+
+.plan-intro-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+.plan-intro-sub {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 300;
+  color: rgba(250,248,243,0.75);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* phase blocks */
+.phase {
+  padding: 140px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-1 { background: var(--cream); }
+.phase-2 { background: var(--navy); color: var(--cream); }
+.phase-3 { background: var(--cream-deep); }
+
+.phase-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.phase-aside { position: sticky; top: 100px; }
+
+.phase-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid var(--gold);
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.phase-2 .phase-tag {
+  background: rgba(201,169,97,0.1);
+}
+
+.phase-roman {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(120px, 16vw, 240px);
+  font-style: italic;
+  font-weight: 200;
+  color: var(--gold);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  margin-bottom: 16px;
+}
+
+.phase-1 .phase-roman { color: var(--gold-dim); opacity: 0.5; }
+.phase-3 .phase-roman { color: var(--gold-dim); opacity: 0.5; }
+
+.phase-when {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold-dim);
+}
+
+.phase-2 .phase-when { color: var(--gold); }
+
+.phase-main h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 0.98;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+
+.phase-main h3 em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+.phase-main .lede {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 56px;
+  max-width: 720px;
+  opacity: 0.85;
+}
+
+.phase-deliverables {
+  list-style: none;
+  border-top: 1px solid;
+  border-color: rgba(0,0,0,0.1);
+}
+
+.phase-2 .phase-deliverables { border-color: rgba(201,169,97,0.2); }
+
+.phase-deliverables li {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  align-items: start;
+}
+
+.phase-2 .phase-deliverables li { border-bottom-color: rgba(201,169,97,0.15); }
+
+.deliv-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--gold);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.phase-2 .deliv-num { color: var(--gold-bright); }
+
+.deliv-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.deliv-text strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.phase-2 .deliv-text strong { color: var(--cream); }
+
+/* ============ BEFORE / AFTER ============ */
+.compare-section {
+  padding: 160px 64px;
+  background: var(--cream);
+}
+
+.compare-inner { max-width: 1400px; margin: 0 auto; }
+
+.compare-stage {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  margin-top: 64px;
+  align-items: stretch;
+}
+
+.compare-side {
+  padding: 56px 48px;
+  position: relative;
+}
+
+.compare-side.bad {
+  background: var(--cream-deep);
+}
+
+.compare-side.good {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.compare-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.compare-vs::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+.compare-vs span {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--gold);
+  background: var(--cream);
+  padding: 24px 0;
+  position: relative;
+  z-index: 2;
+  font-weight: 300;
+}
+
+.compare-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.compare-side.bad .compare-label { color: var(--muted); }
+.compare-side.good .compare-label { color: var(--gold); }
+
+.compare-side h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.compare-side ul { list-style: none; }
+
+.compare-side li {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  padding: 14px 0;
+  padding-left: 24px;
+  border-bottom: 1px solid;
+  position: relative;
+}
+
+.compare-side li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 12px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.compare-side.bad li { border-bottom-color: var(--line); }
+.compare-side.good li { border-bottom-color: rgba(201,169,97,0.15); }
+
+.compare-side li:last-child { border-bottom: none; }
+
+/* ============ MANIFESTO / PRINCIPLES ============ */
+.manifesto-section {
+  padding: 160px 64px;
+  background: var(--navy);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.manifesto-section::before {
+  content: 'i';
+  position: absolute;
+  top: -40px;
+  right: 80px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 600px;
+  color: rgba(201,169,97,0.04);
+  line-height: 0.8;
+  font-weight: 200;
+  pointer-events: none;
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 56px;
+  margin-top: 32px;
+}
+
+.manifesto-item {
+  padding-top: 24px;
+  border-top: 2px solid var(--gold);
+  position: relative;
+}
+
+.manifesto-item-num {
+  position: absolute;
+  top: -12px;
+  right: 0;
+  background: var(--navy);
+  padding-left: 12px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.manifesto-item h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.manifesto-item p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(250,248,243,0.78);
+}
+
+/* ============ TOOLS RIBBON ============ */
+.tools-section {
+  padding: 160px 64px;
+  background: var(--cream-deep);
+}
+
+.tools-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 48px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.tool-card {
+  background: var(--cream);
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background 0.3s;
+}
+
+.tool-card:hover { background: var(--white); }
+
+.tool-card-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  margin-bottom: 6px;
+}
+
+.tool-card-cat {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+}
+
+/* ============ WHY ME (THREE PROOFS) ============ */
+.proof-section {
+  padding: 160px 64px;
+  background: var(--cream);
+}
+
+.proof-stack {
+  margin-top: 32px;
+}
+
+.proof-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 56px;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.proof-row:last-child { border-bottom: none; }
+
+.proof-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 80px;
+  font-weight: 200;
+  color: var(--gold);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.proof-content { padding-top: 12px; }
+
+.proof-content h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 2.8vw, 36px);
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.proof-content p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 16px;
+  max-width: 760px;
+}
+
+.proof-tag {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  margin-top: 8px;
+}
+
+/* ============ BEYOND DAY 90 ============ */
+.beyond-section {
+  padding: 200px 64px;
+  background: var(--navy);
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.beyond-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+.beyond-text {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4.8vw, 64px);
+  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+
+.beyond-text em { font-style: italic; color: var(--gold); }
+
+.beyond-prose {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.55;
+  font-weight: 300;
+  color: rgba(250,248,243,0.78);
+  max-width: 780px;
+  margin: 0 auto 24px;
+}
+
+/* ============ CLOSING / ASK ============ */
+.closing-section {
+  padding: 200px 64px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.closing-inner { max-width: 1100px; margin: 0 auto; }
+
+.closing-quote-mark {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 240px;
+  line-height: 0.5;
+  color: var(--gold);
+  opacity: 0.35;
+  font-weight: 300;
+  margin-bottom: -48px;
+}
+
+.closing-quote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1.15;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 32px;
+}
+
+.closing-source {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  font-weight: 700;
+  margin-bottom: 80px;
+}
+
+.closing-response {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--navy);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.closing-response em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ============ THANKS / CONTACT ============ */
+.contact-section {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 140px 64px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,97,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.contact-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+
+.contact-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 56px;
+}
+
+.contact-name {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 300;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.contact-name em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.contact-role {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 64px;
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 64px;
+}
+
+.contact-details a {
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.contact-details a:hover { color: var(--gold); }
+
+.contact-details span { display: flex; align-items: center; gap: 8px; }
+
+.contact-details span::before {
+  content: '·';
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.contact-final {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(250,248,243,0.6);
+  font-weight: 300;
+  padding-top: 48px;
+  border-top: 1px solid rgba(201,169,97,0.2);
+}
+
+.contact-seal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: 'Fraunces', serif;
+  margin-top: 64px;
+  position: relative;
+}
+
+.contact-seal::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(201,169,97,0.3);
+  border-radius: 50%;
+}
+
+.contact-seal-initials { font-size: 22px; font-weight: 500; }
+.contact-seal-year { font-size: 8px; letter-spacing: 0.3em; margin-top: 2px; font-weight: 600; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .hero, .section, .stats-ribbon, .founder-quote, .compare-section,
+  .manifesto-section, .tools-section, .proof-section, .beyond-section,
+  .closing-section, .contact-section, .plan-intro, .phase, .statement-spread {
+    padding-left: 24px;
+    padding-right: 24px;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Manrope', -apple-system, sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.6;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .page {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 80px 64px;
-    background: var(--cream);
-  }
-
-  /* ---------- COVER ---------- */
-  .cover {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 64px;
-    max-width: 880px;
-    margin: 0 auto;
-    background: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle at top right, var(--gold-soft) 0%, transparent 60%);
-    opacity: 0.25;
-    pointer-events: none;
-  }
-
-  .cover-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .cover-top span:last-child { color: var(--muted); font-weight: 500; }
-
-  .cover-main {
-    margin-top: 80px;
-  }
-
-  .eyebrow {
-    font-family: 'Manrope', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .eyebrow::before {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--gold);
-  }
-
-  .cover-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(48px, 7vw, 84px);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 28px;
-    font-variation-settings: "opsz" 144, "SOFT" 50;
-  }
-
-  .cover-title em {
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 300;
-  }
-
-  .cover-sub {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 580px;
-    font-weight: 300;
-  }
-
-  .cover-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-top: 1px solid var(--line);
-    padding-top: 28px;
-  }
-
-  .signature-block .name {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    color: var(--ink);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-
-  .signature-block .role {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .seal {
-    width: 80px; height: 80px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--gold);
-    font-family: 'Fraunces', serif;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-
-  .seal span:first-child {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 2px;
-    letter-spacing: 0.1em;
-  }
-
-  /* ---------- SECTION HEADERS ---------- */
-  .section {
-    padding: 96px 64px;
-    max-width: 880px;
-    margin: 0 auto;
-    border-top: 1px solid var(--line);
-    background: var(--cream);
-  }
-
-  .section-num {
-    font-family: 'Fraunces', serif;
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 0.2em;
-    margin-bottom: 24px;
-    font-weight: 500;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(36px, 5vw, 52px);
-    line-height: 1.05;
-    color: var(--ink);
-    margin-bottom: 40px;
-    letter-spacing: -0.015em;
-    max-width: 720px;
-  }
-
-  .section-title em {
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 300;
-  }
-
-  .section-intro {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 21px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    max-width: 680px;
-    margin-bottom: 48px;
-    font-weight: 300;
-  }
-
-  p { font-size: 16px; color: var(--text); margin-bottom: 18px; max-width: 720px; }
-
-  /* ---------- THE PROMISE / EXEC SUMMARY ---------- */
-  .promise-card {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 56px 56px;
-    margin: 24px 0;
-    position: relative;
-  }
-
-  .promise-card::before {
-    content: '"';
-    position: absolute;
-    top: 8px; left: 24px;
-    font-family: 'Fraunces', serif;
-    font-size: 96px;
-    color: var(--gold);
-    line-height: 1;
-    opacity: 0.6;
-  }
-
-  .promise-card p {
-    font-family: 'Fraunces', serif;
-    font-size: 26px;
-    line-height: 1.45;
-    color: var(--cream);
-    font-weight: 300;
-    max-width: none;
-    margin-bottom: 0;
-    padding-left: 48px;
-  }
-
-  .promise-card p strong {
-    color: var(--gold-soft);
-    font-weight: 500;
-  }
-
-  /* ---------- UNDERSTANDING ---------- */
-  .pillars {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin-top: 32px;
-  }
-
-  .pillar {
-    padding: 32px 0;
-    border-bottom: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-
-  .pillar:last-child { border-bottom: none; }
-
-  .pillar-num {
-    font-family: 'Fraunces', serif;
-    font-size: 36px;
-    color: var(--gold);
-    font-weight: 300;
-    line-height: 1;
-  }
-
-  .pillar-content h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    color: var(--ink);
-    font-weight: 500;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-
-  .pillar-content p { font-size: 15.5px; color: var(--text); margin-bottom: 0; }
-
-  /* ---------- 90-DAY PLAN ---------- */
-  .phase {
-    margin: 40px 0 56px;
-    background: var(--cream-deep);
-    padding: 48px 48px;
-    border-left: 4px solid var(--gold);
-    position: relative;
-  }
-
-  .phase-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .phase-tag {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 700;
-  }
-
-  .phase-days {
-    font-family: 'Fraunces', serif;
-    font-size: 14px;
-    color: var(--muted);
-    font-style: italic;
-  }
-
-  .phase h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    color: var(--ink);
-    font-weight: 500;
-    margin-bottom: 20px;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-
-  .phase-desc {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 17px;
-    margin-bottom: 24px;
-    font-weight: 300;
-    max-width: 100%;
-  }
-
-  .deliverables {
-    list-style: none;
-    margin-top: 16px;
-  }
-
-  .deliverables li {
-    padding: 14px 0 14px 32px;
-    border-bottom: 1px solid rgba(184, 146, 74, 0.15);
-    font-size: 15.5px;
-    color: var(--text);
-    position: relative;
-    line-height: 1.55;
-  }
-
-  .deliverables li:last-child { border-bottom: none; }
-
-  .deliverables li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  .deliverables li strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* ---------- BEFORE / AFTER ---------- */
-  .compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 32px;
-    border: 1px solid var(--line);
-  }
-
-  .compare-col { padding: 32px 32px 28px; }
-
-  .compare-col.before {
-    background: var(--cream-deep);
-    border-right: 1px solid var(--line);
-  }
-
-  .compare-col.after { background: var(--ink); color: var(--cream); }
-
-  .compare-label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    font-weight: 700;
-  }
-
-  .compare-col.before .compare-label { color: var(--muted); }
-  .compare-col.after .compare-label { color: var(--gold-soft); }
-
-  .compare-col h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-
-  .compare-col.after h3 { color: var(--cream); }
-
-  .compare-col ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .compare-col li {
-    font-size: 14.5px;
-    line-height: 1.6;
-    padding: 10px 0;
-    border-bottom: 1px solid;
-  }
-
-  .compare-col.before li { border-color: var(--line); color: var(--text); }
-  .compare-col.after li { border-color: rgba(212, 181, 122, 0.2); color: var(--cream); }
-
-  .compare-col li:last-child { border-bottom: none; }
-
-  /* ---------- PRINCIPLES ---------- */
-  .principles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 48px;
-    margin-top: 32px;
-  }
-
-  .principle {
-    padding-top: 24px;
-    border-top: 2px solid var(--ink);
-  }
-
-  .principle h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 19px;
-    color: var(--ink);
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .principle p { font-size: 14.5px; color: var(--text); line-height: 1.6; margin-bottom: 0; }
-
-  /* ---------- TOOLS ---------- */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    margin-top: 32px;
-    border: 1px solid var(--line);
-  }
-
-  .tool {
-    background: var(--cream);
-    padding: 24px 20px;
-    text-align: center;
-  }
-
-  .tool-name {
-    font-family: 'Fraunces', serif;
-    font-size: 17px;
-    color: var(--ink);
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-
-  .tool-cat {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  /* ---------- BEYOND ---------- */
-  .beyond {
-    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
-    padding: 56px 48px;
-    margin-top: 32px;
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--gold);
-  }
-
-  .beyond h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 26px;
-    color: var(--ink);
-    margin-bottom: 24px;
-    font-weight: 500;
-  }
-
-  .beyond p { font-size: 16px; line-height: 1.7; }
-
-  /* ---------- CLOSING ---------- */
-  .closing {
-    text-align: center;
-    padding: 80px 48px;
-    border-top: 1px solid var(--line);
-  }
-
-  .closing-quote {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 28px;
-    line-height: 1.45;
-    color: var(--ink);
-    max-width: 640px;
-    margin: 0 auto 40px;
-    font-weight: 300;
-  }
-
-  .closing-quote em {
-    font-style: normal;
-    color: var(--gold);
-  }
-
-  .signoff {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    color: var(--ink);
-    margin-top: 32px;
-    font-weight: 500;
-  }
-
-  .contact {
-    margin-top: 16px;
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); }
-
-  /* ---------- DECORATIVE ---------- */
-  .ornament {
-    text-align: center;
-    color: var(--gold);
-    font-size: 20px;
-    margin: 48px 0;
-    letter-spacing: 1em;
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 720px) {
-    .page, .section, .cover { padding: 48px 28px; }
-    .compare { grid-template-columns: 1fr; }
-    .compare-col.before { border-right: none; border-bottom: 1px solid var(--line); }
-    .principles { grid-template-columns: 1fr; }
-    .tools-grid { grid-template-columns: repeat(2, 1fr); }
-    .phase { padding: 32px 24px; }
-    .promise-card { padding: 40px 32px; }
-    .promise-card p { padding-left: 32px; font-size: 22px; }
-    .pillar { grid-template-columns: 1fr; gap: 8px; }
-  }
-
-  /* ---------- PRINT ---------- */
-  @media print {
-    body { background: white; }
-    .page, .section, .cover { background: white; padding: 48px 40px; max-width: 100%; }
-    .section { page-break-before: always; border-top: none; }
-    .cover { min-height: auto; page-break-after: always; }
-    .promise-card { page-break-inside: avoid; }
-    .phase { page-break-inside: avoid; }
-    .compare { page-break-inside: avoid; }
-    .beyond { page-break-inside: avoid; }
-    .closing { page-break-before: always; }
-    @page { margin: 1.5cm; size: A4; }
-  }
+  .hero { padding: 32px 24px; }
+  .editorial-two-col { grid-template-columns: 1fr; gap: 48px; }
+  .col-meta { position: static; }
+  .stats-ribbon-inner { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
+  .stat-block { border-right: none; padding: 24px 16px; border-bottom: 1px solid var(--line); }
+  .pillar-item { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  .pillar-number { font-size: 64px; }
+  .compare-stage { grid-template-columns: 1fr; }
+  .compare-vs { padding: 24px 0; }
+  .compare-vs::before { width: 60%; height: 1px; left: 20%; top: 50%; bottom: auto; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .manifesto-grid { grid-template-columns: 1fr; gap: 32px; }
+  .tools-list { grid-template-columns: repeat(2, 1fr); }
+  .phase-inner { grid-template-columns: 1fr; gap: 32px; }
+  .phase-aside { position: static; }
+  .phase-roman { font-size: 100px; }
+  .proof-row { grid-template-columns: 1fr; gap: 8px; padding: 40px 0; }
+  .proof-num { font-size: 56px; }
+  .scroll-nav { display: none; }
+  .section-num { font-size: 28vw; top: -2vw; right: -2vw; }
+  .closing-quote-mark { font-size: 140px; }
+  .contact-details { flex-direction: column; gap: 16px; }
+  .contact-details span::before { display: none; }
+}
+
+/* ============ PRINT ============ */
+@media print {
+  .scroll-nav, .reading-progress { display: none; }
+  body { background: white; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .section, .hero { page-break-inside: avoid; }
+  @page { margin: 1cm; }
+}
 </style>
 </head>
 <body>
 
-<!-- ============ COVER ============ -->
-<section class="cover">
-  <div class="cover-top">
-    <span>Rothmore Property × J. Vicentillo</span>
-    <span>Confidential · Proposal</span>
+<div class="reading-progress" id="progressBar"></div>
+
+<nav class="scroll-nav" id="scrollNav">
+  <a href="#hero" class="scroll-dot active" data-label="Cover" data-section="hero"></a>
+  <a href="#about" class="scroll-dot" data-label="About" data-section="about"></a>
+  <a href="#research" class="scroll-dot" data-label="Research" data-section="research"></a>
+  <a href="#realities" class="scroll-dot" data-label="Realities" data-section="realities"></a>
+  <a href="#plan" class="scroll-dot" data-label="The Plan" data-section="plan"></a>
+  <a href="#compare" class="scroll-dot" data-label="Difference" data-section="compare"></a>
+  <a href="#manifesto" class="scroll-dot" data-label="Principles" data-section="manifesto"></a>
+  <a href="#tools" class="scroll-dot" data-label="Tools" data-section="tools"></a>
+  <a href="#proof" class="scroll-dot" data-label="Proof" data-section="proof"></a>
+  <a href="#beyond" class="scroll-dot" data-label="Beyond" data-section="beyond"></a>
+  <a href="#close" class="scroll-dot" data-label="The Ask" data-section="close"></a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-top">
+    <div class="hero-mark">Rothmore <em>×</em> Vicentillo</div>
+    <div class="hero-meta">An Operator's Proposal · MMXXVI</div>
   </div>
 
-  <div class="cover-main">
-    <div class="eyebrow">A 90-Day Operational Plan</div>
-    <h1 class="cover-title">The operational hub<br><em>your team has been waiting for.</em></h1>
-    <p class="cover-sub">A proposal for the Virtual Assistant role at Rothmore Property — what I'll deliver in the first 30, 60, and 90 days, and why I'm the operator you want behind the scenes.</p>
+  <div class="hero-center">
+    <div class="hero-eyebrow">A Ninety-Day Plan for the Virtual Assistant Role</div>
+    <h1 class="hero-title">The operator<br><em>you've been<br>looking for.</em></h1>
+    <p class="hero-tag">You wrote a job description for someone proactive, detail-obsessed, and trusted to act on the CEO's behalf. <strong>That is me.</strong> What follows is the proof — and the plan.</p>
   </div>
 
-  <div class="cover-bottom">
-    <div class="signature-block">
+  <div class="hero-bottom">
+    <div class="hero-sig">
       <div class="name">Jude Mike M. Vicentillo</div>
-      <div class="role">Virtual Assistant · Caloocan, Philippines</div>
+      <div class="where">Caloocan · Philippines</div>
     </div>
-    <div class="seal">
-      <span>JV</span>
-      <span>2026</span>
+    <div class="hero-scroll">
+      <span>Begin</span>
+      <div class="arrow"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATEMENT 1 ============ -->
+<section class="statement-spread">
+  <div class="statement-content">
+    <div class="statement-eyebrow reveal">The Promise</div>
+    <p class="statement-text reveal reveal-2">In ninety days, your back office will run <em>without anyone asking</em> <strong>whether it's running.</strong></p>
+    <div class="statement-attribution reveal reveal-3">Jude Vicentillo · The Commitment</div>
+  </div>
+</section>
+
+<!-- ============ ABOUT (EDITORIAL TWO COLUMN) ============ -->
+<section class="section" id="about">
+  <span class="section-num">i</span>
+  <div class="section-inner">
+    <div class="eyebrow reveal">A Brief Introduction</div>
+    <h2 class="section-title reveal reveal-2">Seven years built for <em>exactly this role.</em></h2>
+
+    <div class="editorial-two-col" style="margin-top: 40px;">
+      <aside class="col-meta reveal reveal-3">
+        <div class="col-meta-label">Career at a Glance</div>
+        <div class="col-meta-roles">
+          <div class="role-entry">
+            <div class="role-when">2023 — 2025 · Most Recent</div>
+            <div class="role-where">Tree Art</div>
+            <div class="role-what">Virtual Assistant · End-to-end exec support</div>
+          </div>
+          <div class="role-entry">
+            <div class="role-when">2023 — 2026 · In Parallel</div>
+            <div class="role-where">Optum</div>
+            <div class="role-what">Data Analyst · Dashboards, data hygiene</div>
+          </div>
+          <div class="role-entry">
+            <div class="role-when">2020 — 2023 · Earlier</div>
+            <div class="role-where">Alorica · Teleperformance · Concentrix</div>
+            <div class="role-what">Tech support · Service · Admin</div>
+          </div>
+          <div class="role-entry">
+            <div class="role-when">Education</div>
+            <div class="role-where">Bachelor of Science, Information Technology</div>
+            <div class="role-what">Our Lady of Fatima University · 2016—2022</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-prose reveal reveal-4">
+        <p class="lede-para">My name is Jude. Virtual and executive assistant. Caloocan, Philippines. Career built across executive support, CRM operations, technical support, and data analysis.</p>
+        <p>The thread connecting all of it is the same: I am the person you want when something cannot afford to be missed. I treat operational detail as craft. I move quietly, accurately, and ahead of schedule.</p>
+        <p>What attracted me to Rothmore is that the role you've written is not reactive task-running. You explicitly say you want someone proactive, who suggests improvements, who operates as an extension of the business. That is exactly how I work — and after seeing your sixty-plus UK developments, your Dubai expansion, and your back-to-back International Property Awards, I knew this was a place where that mindset would actually be valued.</p>
+        <p>So rather than apply with a CV and a cover letter like everyone else, I built you this proposal. Read on.</p>
+        <div class="signature">— Jude</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE PROMISE ============ -->
-<section class="section">
-  <div class="section-num">01 — The Promise</div>
-  <h2 class="section-title">If you hire me, here is what changes <em>by the end of week one.</em></h2>
-
-  <div class="promise-card">
-    <p>The CEO inbox stops being a battlefield. The CRM stops drifting. Deals stop slipping. <strong>Within ninety days, you'll have a back office that runs without anyone needing to ask whether it's running</strong> — because someone is finally treating it as the asset it is.</p>
-  </div>
-
-  <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: var(--ink-soft); max-width: 720px; margin-top: 32px; font-weight: 300;">This document is not a CV in disguise. It's a plan. The CV tells you where I've been; this tells you where we'll be at day 30, day 60, and day 90 — and why the rest of this year will be different.</p>
-</section>
-
-<!-- ============ UNDERSTANDING ============ -->
-<section class="section">
-  <div class="section-num">02 — Understanding Your Operation</div>
-  <h2 class="section-title">Before I propose changes, here is what I see <em>about your business.</em></h2>
-  <p class="section-intro">Anyone can read a job description. Fewer take the time to map the operation underneath it. These are the realities I've taken from your post and your website — and they shape every commitment that follows.</p>
-
-  <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-num">01</div>
-      <div class="pillar-content">
-        <h3>You're not running one business. You're running four.</h3>
-        <p>UK new-build sales. Dubai off-plan. CasaCity lettings. Cross-sell into mortgages, solicitors, valuations, snagging, and renovations. Each has its own pipeline, its own paperwork rhythm, its own stakeholders. Without a tight operational hub, the seams between them are exactly where deals leak.</p>
-      </div>
+<!-- ============ STATS RIBBON ============ -->
+<section class="stats-ribbon" id="research">
+  <div class="stats-ribbon-inner">
+    <div class="stat-block reveal">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years of Expertise</div>
+      <div class="stat-context">From your About page</div>
     </div>
-
-    <div class="pillar">
-      <div class="pillar-num">02</div>
-      <div class="pillar-content">
-        <h3>Speed and accuracy are in tension — and you need both.</h3>
-        <p>A property consultancy moves at the pace of the slowest stakeholder: a solicitor who hasn't replied, a developer who's late on a stock list, a CRM record that's missing a phone number. The role you're hiring for is the function that closes those gaps before they become escalations.</p>
-      </div>
+    <div class="stat-block reveal reveal-2">
+      <div class="stat-num">60+</div>
+      <div class="stat-label">UK Developments</div>
+      <div class="stat-context">Across the portfolio</div>
     </div>
-
-    <div class="pillar">
-      <div class="pillar-num">03</div>
-      <div class="pillar-content">
-        <h3>The CEO's time is your scarcest resource.</h3>
-        <p>Your post makes this clear: nothing should fall through the cracks, but the CEO shouldn't be the one watching for them either. The job is to be a filter — a smart one — so the CEO sees what genuinely needs them and nothing else.</p>
-      </div>
+    <div class="stat-block reveal reveal-3">
+      <div class="stat-num">6.5%</div>
+      <div class="stat-label">Average Yield</div>
+      <div class="stat-context">On the buy-to-let book</div>
     </div>
-
-    <div class="pillar">
-      <div class="pillar-num">04</div>
-      <div class="pillar-content">
-        <h3>You're scaling, and the back office must scale faster.</h3>
-        <p>Two consecutive International Property Awards, expansion into Dubai, a growing introducer network. Growth exposes operational weakness fastest. The role I'm proposing isn't to run alongside that growth — it's to get ahead of it.</p>
-      </div>
+    <div class="stat-block reveal reveal-4">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">On Google Reviews</div>
+      <div class="stat-context">Across client feedback</div>
     </div>
   </div>
 </section>
 
-<!-- ============ 90-DAY PLAN ============ -->
-<section class="section">
-  <div class="section-num">03 — The 90-Day Plan</div>
-  <h2 class="section-title">A clear path from day one. <em>Measured, not promised.</em></h2>
-  <p class="section-intro">Here is exactly what I commit to delivering across the first three months. Not aspirations — concrete outputs you can hold me to in our 30-day check-in.</p>
-
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-tag">Phase One · Foundation</span>
-      <span class="phase-days">Days 1 — 30</span>
+<!-- ============ FOUNDER QUOTE ============ -->
+<section class="founder-quote">
+  <div class="fq-inner">
+    <div class="fq-mark reveal">"</div>
+    <p class="fq-text reveal reveal-2">Rothmore provides a one-stop-shop service with access to over sixty new-build developments in the UK — from furniture packs to lettings, and management. We work to offer a turnkey investment solution.</p>
+    <div class="fq-author reveal reveal-3">
+      Founder's Note
+      <span class="fq-author-name">Maxwell Scully · Managing Director &amp; Co-Founder</span>
     </div>
-    <h3>Learn the operation. Stabilise the basics.</h3>
-    <p class="phase-desc">The first month is not for making changes. It is for understanding the business well enough to make the right ones in months two and three.</p>
-    <ul class="deliverables">
-      <li><strong>CEO inbox under control.</strong> Triage system in place. A consistent daily brief landing before the UK day starts so leadership opens the laptop to clarity, not chaos.</li>
-      <li><strong>Calendar and meeting hygiene.</strong> Every meeting has an agenda or it doesn't happen. Buffers between calls. Travel and accommodation arrangements handled without prompting.</li>
-      <li><strong>HubSpot audit complete.</strong> A written one-page report of what's clean, what's drifting, what's missing — and a recommendation on what to fix first.</li>
-      <li><strong>Portfolio map.</strong> A single-source overview of all 60+ UK developments and the Dubai portfolio: status, key contacts, last-updated dates, where the data lives.</li>
-      <li><strong>Stakeholder directory.</strong> Developer partners, agents, introducers, solicitors — names, roles, preferred contact, and the relationship history I can find. So I'm useful from week three.</li>
-      <li><strong>Process gaps logged.</strong> A running list of frictions I've spotted, kept private until I have something specific to recommend.</li>
-    </ul>
   </div>
+</section>
 
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-tag">Phase Two · Systems</span>
-      <span class="phase-days">Days 31 — 60</span>
+<!-- ============ FOUR REALITIES ============ -->
+<section class="section cream-deep" id="realities">
+  <span class="section-num">ii</span>
+  <div class="section-inner">
+    <div class="eyebrow reveal">What I See Underneath the Job Description</div>
+    <h2 class="section-title reveal reveal-2">Four operational realities <em>most candidates miss.</em></h2>
+    <p class="section-lede reveal reveal-3">Anyone can read a job description. Fewer take the time to understand the business underneath it. These are the realities I have taken from your post and your website — and they shape every commitment that follows.</p>
+
+    <div class="pillars-stack">
+      <div class="pillar-item reveal">
+        <div class="pillar-number">i.</div>
+        <div class="pillar-content">
+          <h3>You're not running one business. You're running four.</h3>
+          <p>UK new-build sales. Dubai off-plan. CasaCity lettings. Cross-sell into mortgages, solicitors, valuations, snagging, and renovations. Each has its own pipeline, paperwork rhythm, and stakeholders. <em>The seams between them are exactly where deals leak.</em> I see those seams. I close them.</p>
+        </div>
+      </div>
+
+      <div class="pillar-item reveal">
+        <div class="pillar-number">ii.</div>
+        <div class="pillar-content">
+          <h3>Speed and accuracy are in tension — and you need both.</h3>
+          <p>A property consultancy moves at the pace of its slowest stakeholder: a quiet solicitor, a late stock list, a missing CRM phone number. The role exists to close those gaps before they become escalations. <em>That is the work I do best.</em></p>
+        </div>
+      </div>
+
+      <div class="pillar-item reveal">
+        <div class="pillar-number">iii.</div>
+        <div class="pillar-content">
+          <h3>The CEO's time is your scarcest resource.</h3>
+          <p>Your post makes this explicit: nothing should fall through the cracks, but the CEO shouldn't be the one watching for them either. <em>The job is to be a smart filter.</em> I filter ruthlessly. The CEO sees what genuinely needs them. Nothing else.</p>
+        </div>
+      </div>
+
+      <div class="pillar-item reveal">
+        <div class="pillar-number">iv.</div>
+        <div class="pillar-content">
+          <h3>You are scaling, and the back office must scale faster.</h3>
+          <p>Two consecutive International Property Awards. Active expansion into Dubai. A growing introducer network. <em>Growth exposes operational weakness fastest.</em> This role is to get ahead of that, not keep up with it. That is precisely the operator I am.</p>
+        </div>
+      </div>
     </div>
-    <h3>Tighten the back office. Take work off the team.</h3>
-    <p class="phase-desc">By day 31, the inbox and calendar should be running without you thinking about them. Now we move to the operational layer underneath.</p>
-    <ul class="deliverables">
-      <li><strong>Property portal accuracy.</strong> Pricing, availability, unit details, and media verified against developer source data on a weekly cadence. Rightmove and other listings reflect reality, not a snapshot from three weeks ago.</li>
-      <li><strong>HubSpot brought up to standard.</strong> Pipeline stages applied consistently across active deals. Contact records deduplicated and tagged. Reporting dashboards rebuilt to show leadership what they actually need to see.</li>
-      <li><strong>Document templates audited and refreshed.</strong> Reservation forms, agency agreements, commission letters, sales memoranda, investment brochures, one-pagers — current branding, current language, version-controlled.</li>
-      <li><strong>Deal progression tracker live.</strong> Every active sale visible in one view: stage, next action, owner, blocker, last contact. The CEO can see the entire pipeline in 60 seconds.</li>
-      <li><strong>Commission log reconciled.</strong> Outstanding invoices identified, follow-ups initiated, the log brought to a clean baseline so we never have to ask "did this get paid?" again.</li>
-      <li><strong>Onboarding flow documented.</strong> A repeatable checklist for bringing on new agents and introducers, so the next ten join the same way as the first.</li>
-    </ul>
   </div>
+</section>
 
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-tag">Phase Three · Leverage</span>
-      <span class="phase-days">Days 61 — 90</span>
+<!-- ============ THE PLAN INTRO ============ -->
+<section class="plan-intro" id="plan">
+  <div class="plan-intro-inner">
+    <div class="plan-intro-eyebrow reveal">Days One Through Ninety</div>
+    <h2 class="plan-intro-title reveal reveal-2">Three phases.<br>Three months.<br><em>Measured.</em><br>Not promised.</h2>
+    <p class="plan-intro-sub reveal reveal-3">What follows are specific outputs you can hold me to in our day-thirty check-in.</p>
+  </div>
+</section>
+
+<!-- ============ PHASE 1 ============ -->
+<section class="phase phase-1">
+  <div class="phase-inner">
+    <aside class="phase-aside">
+      <div class="phase-tag">Phase One · Foundation</div>
+      <div class="phase-roman">i</div>
+      <div class="phase-when">Days 1 — 30</div>
+    </aside>
+    <div class="phase-main">
+      <h3 class="reveal">I learn the operation.<br><em>I stabilise the basics.</em></h3>
+      <p class="lede reveal reveal-2">The first month is not for changes. It is for understanding the business well enough to make the right ones in months two and three. Earned credibility before earned authority.</p>
+      <ol class="phase-deliverables reveal reveal-3">
+        <li><span class="deliv-num">01</span><span class="deliv-text"><strong>CEO inbox under control.</strong> Triage system live. Daily brief landing in your inbox before the UK day starts.</span></li>
+        <li><span class="deliv-num">02</span><span class="deliv-text"><strong>Calendar &amp; meeting hygiene.</strong> Every meeting has an agenda. Buffers between calls. Travel handled silently.</span></li>
+        <li><span class="deliv-num">03</span><span class="deliv-text"><strong>HubSpot audit complete.</strong> One-page report — what is clean, what is drifting, what is broken — with recommendations.</span></li>
+        <li><span class="deliv-num">04</span><span class="deliv-text"><strong>Portfolio map built.</strong> Single-source overview of all sixty-plus UK developments and the Dubai portfolio.</span></li>
+        <li><span class="deliv-num">05</span><span class="deliv-text"><strong>Stakeholder directory.</strong> Developers, agents, introducers, solicitors — names, roles, history, preferred contact.</span></li>
+        <li><span class="deliv-num">06</span><span class="deliv-text"><strong>Process gaps logged.</strong> Frictions kept private until I have specific, costed recommendations.</span></li>
+      </ol>
     </div>
-    <h3>Move from operator to multiplier.</h3>
-    <p class="phase-desc">By day 60, the basics run themselves. The final phase is about creating leverage — making each member of the team measurably more productive.</p>
-    <ul class="deliverables">
-      <li><strong>Weekly leadership report standardised.</strong> Active deals, pipeline movement, outstanding commissions, stakeholder activity, risks — delivered every Monday before the UK day starts.</li>
-      <li><strong>Monthly business review prepared.</strong> A clean, narrative-led summary the CEO can take into investor or partner conversations without rebuilding from scratch.</li>
-      <li><strong>Shared file system reorganised.</strong> Development folders, marketing assets, signed agreements, investor documents — locatable in three clicks or fewer, by anyone on the team.</li>
-      <li><strong>AI-assisted drafting workflow established.</strong> Templates and prompts that let me produce first drafts of correspondence in minutes, not hours, while preserving the CEO's voice.</li>
-      <li><strong>First proactive recommendations delivered.</strong> Three to five specific, costed suggestions for tightening the operation further — based on what I've actually observed, not what looked good on the job description.</li>
-      <li><strong>Day 90 check-in.</strong> Honest review against this plan. What worked. What didn't. What we change next.</li>
-    </ul>
+  </div>
+</section>
+
+<!-- ============ PHASE 2 ============ -->
+<section class="phase phase-2">
+  <div class="phase-inner">
+    <aside class="phase-aside">
+      <div class="phase-tag">Phase Two · Systems</div>
+      <div class="phase-roman">ii</div>
+      <div class="phase-when">Days 31 — 60</div>
+    </aside>
+    <div class="phase-main">
+      <h3 class="reveal">I tighten the back office.<br><em>I take work off the team.</em></h3>
+      <p class="lede reveal reveal-2">By day thirty-one, the inbox and calendar run themselves. Now I move to the operational layer underneath — the layer most virtual assistants never reach.</p>
+      <ol class="phase-deliverables reveal reveal-3">
+        <li><span class="deliv-num">07</span><span class="deliv-text"><strong>Property portal accuracy enforced.</strong> Pricing, availability, units verified weekly against developer source data. Rightmove and elsewhere.</span></li>
+        <li><span class="deliv-num">08</span><span class="deliv-text"><strong>HubSpot brought to standard.</strong> Pipeline stages applied consistently. Records deduplicated. Dashboards rebuilt for leadership.</span></li>
+        <li><span class="deliv-num">09</span><span class="deliv-text"><strong>Document templates audited.</strong> Reservation forms, agency agreements, commission letters, brochures — current branding, version-controlled.</span></li>
+        <li><span class="deliv-num">10</span><span class="deliv-text"><strong>Deal progression tracker live.</strong> Every active sale visible in one view. Stage, next action, owner, blocker, last contact.</span></li>
+        <li><span class="deliv-num">11</span><span class="deliv-text"><strong>Commission log reconciled.</strong> Outstanding invoices identified. Follow-ups initiated. Clean baseline established.</span></li>
+        <li><span class="deliv-num">12</span><span class="deliv-text"><strong>Onboarding flow documented.</strong> Repeatable checklist for new agents and introducers. Scalable from day one.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHASE 3 ============ -->
+<section class="phase phase-3">
+  <div class="phase-inner">
+    <aside class="phase-aside">
+      <div class="phase-tag">Phase Three · Leverage</div>
+      <div class="phase-roman">iii</div>
+      <div class="phase-when">Days 61 — 90</div>
+    </aside>
+    <div class="phase-main">
+      <h3 class="reveal">I move from operator<br><em>to multiplier.</em></h3>
+      <p class="lede reveal reveal-2">By day sixty, the basics run themselves. The final phase is leverage — making every member of the team measurably more productive. This is where the role earns its return.</p>
+      <ol class="phase-deliverables reveal reveal-3">
+        <li><span class="deliv-num">13</span><span class="deliv-text"><strong>Weekly leadership report standardised.</strong> Active deals, pipeline movement, outstanding commissions, risks — every Monday before UK day starts.</span></li>
+        <li><span class="deliv-num">14</span><span class="deliv-text"><strong>Monthly business review prepared.</strong> A clean narrative the CEO can take into investor and partner conversations without rebuilding.</span></li>
+        <li><span class="deliv-num">15</span><span class="deliv-text"><strong>Shared file system reorganised.</strong> Development folders, agreements, investor docs — locatable in three clicks or fewer, by anyone on the team.</span></li>
+        <li><span class="deliv-num">16</span><span class="deliv-text"><strong>AI-assisted drafting workflow live.</strong> Templates and prompts producing first drafts in minutes, voice preserved, quality up.</span></li>
+        <li><span class="deliv-num">17</span><span class="deliv-text"><strong>Three to five proactive recommendations delivered.</strong> Specific. Costed. Based on what I have actually observed.</span></li>
+        <li><span class="deliv-num">18</span><span class="deliv-text"><strong>Day ninety check-in.</strong> Honest review against this plan. What worked. What didn't. What we change next.</span></li>
+      </ol>
+    </div>
   </div>
 </section>
 
 <!-- ============ BEFORE / AFTER ============ -->
-<section class="section">
-  <div class="section-num">04 — What This Looks Like, Concretely</div>
-  <h2 class="section-title">A before-and-after of <em>your CEO's day.</em></h2>
-  <p class="section-intro">The clearest way to describe what changes is to describe what stops happening.</p>
+<section class="compare-section" id="compare">
+  <div class="compare-inner">
+    <div class="eyebrow reveal">A Before-and-After of Your CEO's Day</div>
+    <h2 class="section-title reveal reveal-2">The clearest measure is <em>what stops happening.</em></h2>
 
-  <div class="compare">
-    <div class="compare-col before">
-      <div class="compare-label">Before · Today</div>
-      <h3>The cost of operational drag</h3>
-      <ul>
-        <li>Inbox at 80+ unread by 9am UK. Anything urgent buried under newsletters and CVs.</li>
-        <li>Half the morning lost re-reading email threads to remember what's outstanding.</li>
-        <li>Stock list arrives from a developer; nobody updates the portal for three days.</li>
-        <li>Solicitor goes silent on a deal; nobody chases until the client notices first.</li>
-        <li>HubSpot stages don't match reality. Reporting becomes a guessing exercise.</li>
-        <li>Commission log is a series of "I think we got paid for that one."</li>
-        <li>The CEO is the bottleneck on every decision because the CEO is the only one with the full picture.</li>
-      </ul>
-    </div>
-
-    <div class="compare-col after">
-      <div class="compare-label">After · 90 Days In</div>
-      <h3>The cost of doing it right</h3>
-      <ul>
-        <li>A morning brief in the inbox before the UK day starts: what needs you, what's been handled, what to expect.</li>
-        <li>Calendar is clean. Buffers are real. Meetings have agendas or they don't happen.</li>
-        <li>Stock lists are processed within hours. Portals reflect reality, not last week's version.</li>
-        <li>Solicitors and developers know there's someone who chases. Deals move because we expect them to.</li>
-        <li>HubSpot pipeline is a true picture. The dashboard is the meeting, not a debate about the meeting.</li>
-        <li>Commission log is reconciled weekly. Nothing is ever a surprise.</li>
-        <li>The CEO becomes the strategist again — because operations no longer needs the CEO to function.</li>
-      </ul>
+    <div class="compare-stage reveal reveal-3">
+      <div class="compare-side bad">
+        <div class="compare-label">Without Me · Today</div>
+        <h3>The cost of operational drag</h3>
+        <ul>
+          <li>Inbox at eighty-plus unread by 9am UK. Urgent items buried under newsletters and CVs.</li>
+          <li>Half the morning lost re-reading email threads to remember what is outstanding.</li>
+          <li>Stock list arrives from a developer; nobody updates the portal for three days.</li>
+          <li>A solicitor goes silent on a deal; nobody chases until the client notices first.</li>
+          <li>HubSpot stages don't match reality. Reporting becomes a guessing exercise.</li>
+          <li>Commission log is "I think we got paid for that one."</li>
+          <li>The CEO is the bottleneck on every decision because the CEO is the only one with the full picture.</li>
+        </ul>
+      </div>
+      <div class="compare-vs"><span>vs.</span></div>
+      <div class="compare-side good">
+        <div class="compare-label">With Me · 90 Days In</div>
+        <h3>The cost of doing it right</h3>
+        <ul>
+          <li>Morning brief in the inbox before UK day starts. What needs you. What's been handled.</li>
+          <li>Calendar is clean. Buffers are real. Meetings have agendas or they don't happen.</li>
+          <li>Stock lists processed within hours. Portals reflect reality, not last week's version.</li>
+          <li>Solicitors and developers know there is someone who chases. Deals move.</li>
+          <li>HubSpot is a true picture. The dashboard is the meeting, not a debate about it.</li>
+          <li>Commission log reconciled weekly. Nothing is ever a surprise.</li>
+          <li>The CEO becomes the strategist again — operations no longer needs the CEO to function.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PRINCIPLES ============ -->
-<section class="section">
-  <div class="section-num">05 — How I Operate</div>
-  <h2 class="section-title">A short manifesto, so you know <em>what you're hiring.</em></h2>
-  <p class="section-intro">Process matters. So does temperament. These are the principles I bring to the work, in plain language.</p>
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto-section" id="manifesto">
+  <span class="section-num">iii</span>
+  <div class="section-inner" style="position: relative; z-index: 5;">
+    <div class="eyebrow reveal">A Short Manifesto</div>
+    <h2 class="section-title reveal reveal-2">So you know <em>exactly what you're hiring.</em></h2>
+    <p class="section-lede reveal reveal-3">Process matters. So does temperament. These are the principles I bring to the work — not aspirations, but operating habits.</p>
 
-  <div class="principles">
-    <div class="principle">
-      <h3>Confidentiality is binary.</h3>
-      <p>Either everything is treated as confidential by default, or nothing meaningfully is. I default to silence unless I have explicit permission to share. The CEO's inbox is a vault, not a notebook.</p>
-    </div>
-
-    <div class="principle">
-      <h3>Acknowledge before action.</h3>
-      <p>If something needs an hour, I'll send a thirty-second acknowledgement first. People should never wonder whether their message reached me. That single habit removes the majority of follow-up friction.</p>
-    </div>
-
-    <div class="principle">
-      <h3>Catch errors before they ship.</h3>
-      <p>The job is not to be busy. The job is to be the last set of eyes before something leaves the building. I treat the small voice that says "this doesn't feel right" as the most important signal in my workflow.</p>
-    </div>
-
-    <div class="principle">
-      <h3>AI as a co-pilot, never a replacement.</h3>
-      <p>I use modern tools daily — for first drafts, summarising long threads, structuring messy data. I never let AI send unsupervised, and I never paste confidential business information into public tools.</p>
-    </div>
-
-    <div class="principle">
-      <h3>Document as I go.</h3>
-      <p>If I do something twice, the third time has a checklist. If I do it five times, it has a template. The goal is that someone could step into my role and not lose two weeks figuring out where the bodies are buried.</p>
-    </div>
-
-    <div class="principle">
-      <h3>Surface problems early.</h3>
-      <p>I'd rather flag at hour two that something will take six hours, than stay silent and miss a deadline at hour five. Calm honesty saves more time than heroic effort.</p>
+    <div class="manifesto-grid">
+      <div class="manifesto-item reveal">
+        <span class="manifesto-item-num">i.</span>
+        <h3>Confidentiality is binary.</h3>
+        <p>Either everything is treated as confidential by default, or nothing meaningfully is. The CEO's inbox is a vault. Not a notebook.</p>
+      </div>
+      <div class="manifesto-item reveal reveal-2">
+        <span class="manifesto-item-num">ii.</span>
+        <h3>Acknowledge before action.</h3>
+        <p>If something needs an hour, I send a thirty-second acknowledgement first. Nobody should ever wonder if their message reached me.</p>
+      </div>
+      <div class="manifesto-item reveal reveal-3">
+        <span class="manifesto-item-num">iii.</span>
+        <h3>Catch it before it ships.</h3>
+        <p>The job is not to be busy. The job is to be the last set of eyes before something leaves the building. I take that seriously.</p>
+      </div>
+      <div class="manifesto-item reveal">
+        <span class="manifesto-item-num">iv.</span>
+        <h3>AI as co-pilot, never replacement.</h3>
+        <p>I use modern tools daily — drafting, summarising, structuring messy data. Never unsupervised. Never confidential data in public tools.</p>
+      </div>
+      <div class="manifesto-item reveal reveal-2">
+        <span class="manifesto-item-num">v.</span>
+        <h3>Document as I go.</h3>
+        <p>Twice means a checklist. Five times means a template. The role I take on shouldn't be fragile. It should be transferable.</p>
+      </div>
+      <div class="manifesto-item reveal reveal-3">
+        <span class="manifesto-item-num">vi.</span>
+        <h3>Surface problems early.</h3>
+        <p>I'd rather flag at hour two that something will take six hours, than stay silent and miss the deadline at hour five.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ TOOLS ============ -->
-<section class="section">
-  <div class="section-num">06 — Tools I Bring, Day One</div>
-  <h2 class="section-title">No ramp on the modern stack. <em>I already work this way.</em></h2>
-  <p class="section-intro">A short list of what I use fluently. Anything Rothmore-specific I don't yet know — Alto, your DocuSign templates, your branded asset library — I'd come up the curve on within the first two weeks.</p>
+<section class="tools-section" id="tools">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Day One Fluency</div>
+    <h2 class="section-title reveal reveal-2">No ramp on the modern stack.<br><em>I already work this way.</em></h2>
+    <p class="section-lede reveal reveal-3">Tools I bring fluently. Anything Rothmore-specific I haven't yet seen — Alto, your DocuSign templates, your branded asset library — I'll come up the curve on within two weeks. Not months. Weeks.</p>
 
-  <div class="tools-grid">
-    <div class="tool"><div class="tool-name">HubSpot</div><div class="tool-cat">CRM</div></div>
-    <div class="tool"><div class="tool-name">Microsoft 365</div><div class="tool-cat">Office Suite</div></div>
-    <div class="tool"><div class="tool-name">Google Workspace</div><div class="tool-cat">Collaboration</div></div>
-    <div class="tool"><div class="tool-name">DocuSign</div><div class="tool-cat">Signatures</div></div>
-    <div class="tool"><div class="tool-name">Zendesk</div><div class="tool-cat">Support CRM</div></div>
-    <div class="tool"><div class="tool-name">Asana · Trello</div><div class="tool-cat">Project Mgmt</div></div>
-    <div class="tool"><div class="tool-name">Power BI · Tableau</div><div class="tool-cat">Reporting</div></div>
-    <div class="tool"><div class="tool-name">Excel · Sheets</div><div class="tool-cat">Analysis</div></div>
-    <div class="tool"><div class="tool-name">AI Drafting Tools</div><div class="tool-cat">Productivity</div></div>
+    <div class="tools-list reveal reveal-4">
+      <div class="tool-card"><div class="tool-card-name">HubSpot</div><div class="tool-card-cat">CRM</div></div>
+      <div class="tool-card"><div class="tool-card-name">Microsoft 365</div><div class="tool-card-cat">Office Suite</div></div>
+      <div class="tool-card"><div class="tool-card-name">Google Workspace</div><div class="tool-card-cat">Collaboration</div></div>
+      <div class="tool-card"><div class="tool-card-name">DocuSign</div><div class="tool-card-cat">Signatures</div></div>
+      <div class="tool-card"><div class="tool-card-name">Zendesk</div><div class="tool-card-cat">Support CRM</div></div>
+      <div class="tool-card"><div class="tool-card-name">Asana · Trello</div><div class="tool-card-cat">Project Mgmt</div></div>
+      <div class="tool-card"><div class="tool-card-name">Power BI · Tableau</div><div class="tool-card-cat">Reporting</div></div>
+      <div class="tool-card"><div class="tool-card-name">Excel · Sheets</div><div class="tool-card-cat">Analysis</div></div>
+      <div class="tool-card"><div class="tool-card-name">SharePoint · OneDrive</div><div class="tool-card-cat">Document Mgmt</div></div>
+      <div class="tool-card"><div class="tool-card-name">Outlook · Gmail</div><div class="tool-card-cat">Email</div></div>
+      <div class="tool-card"><div class="tool-card-name">Slack · Teams</div><div class="tool-card-cat">Communications</div></div>
+      <div class="tool-card"><div class="tool-card-name">AI Drafting</div><div class="tool-card-cat">Productivity</div></div>
+    </div>
   </div>
 </section>
 
-<!-- ============ BEYOND ============ -->
-<section class="section">
-  <div class="section-num">07 — Beyond Day 90</div>
-  <h2 class="section-title">A long-term view, not a contractor's view.</h2>
+<!-- ============ THREE PROOFS ============ -->
+<section class="proof-section" id="proof">
+  <span class="section-num">iv</span>
+  <div class="section-inner">
+    <div class="eyebrow reveal">Mapped Directly to Your Three Biggest Pain Points</div>
+    <h2 class="section-title reveal reveal-2">Three reasons. <em>Each one already proven.</em></h2>
 
-  <div class="beyond">
-    <h3>Where I see this role going.</h3>
-    <p>I'm not applying for a task seat. The reason this proposal exists at all is that I want this to be a long-term commitment — and I think the role itself wants to grow. By month six, the natural evolution is to take on more of the operational decision-making: process design, vendor coordination, perhaps light project management on the Dubai side as it scales. By the end of year one, I'd hope to be operating as the de facto operations lead for the back office, freeing the CEO entirely from the running of it.</p>
-    <p style="margin-bottom: 0;">That's the path I'd commit to. Not because it's promised, but because it's where the work goes when it's done well — and I want to be the person doing it.</p>
+    <div class="proof-stack">
+      <div class="proof-row reveal">
+        <div class="proof-num">i.</div>
+        <div class="proof-content">
+          <h3>The CEO's inbox &amp; calendar.</h3>
+          <p>Two years at Tree Art doing exactly this work — triaging, drafting in their voice, flagging only what genuinely needed them. The bar your post sets is the bar I already hold myself to. This is where I am strongest, and it is where Rothmore needs me most.</p>
+          <span class="proof-tag">Tree Art · 2 Years · Direct Experience</span>
+        </div>
+      </div>
+
+      <div class="proof-row reveal reveal-2">
+        <div class="proof-num">ii.</div>
+        <div class="proof-content">
+          <h3>CRM &amp; data hygiene.</h3>
+          <p>HubSpot, Zendesk, and Freshdesk experience plus two and a half years as a data analyst at Optum. I look at a CRM the way you do — pipeline truth, deduplication, daily hygiene. Not a quarterly project. A daily habit. The kind of practitioner who treats your CRM as the asset it is, not the chore most assistants treat it as.</p>
+          <span class="proof-tag">Optum · 2.5 Years · Data Analyst</span>
+        </div>
+      </div>
+
+      <div class="proof-row reveal reveal-3">
+        <div class="proof-num">iii.</div>
+        <div class="proof-content">
+          <h3>Deal &amp; document progression.</h3>
+          <p>Contract preparation, signature chasing, multi-stakeholder tracking. DocuSign workflows, template upkeep, commission tracking — that is exactly the kind of work where being detail-obsessed and proactive matters most. And it is what I do best.</p>
+          <span class="proof-tag">Multi-Role · 7+ Years · Operational Detail</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ CLOSING ============ -->
-<section class="closing">
-  <div class="ornament">· · ·</div>
-
-  <p class="closing-quote">"You operate as a trusted extension of the business, not just task support."<br>— <em>From your job description.</em></p>
-
-  <p style="font-family: 'Fraunces', serif; font-size: 19px; color: var(--ink-soft); max-width: 600px; margin: 0 auto; line-height: 1.6; font-style: italic; font-weight: 300;">That sentence is the reason I wrote this proposal. Most candidates will read it and nod. I read it and built a plan. The next step is yours — and I'd be glad to walk through any part of this in detail.</p>
-
-  <div class="signoff">— Jude Mike M. Vicentillo</div>
-  <div class="contact">
-    <a href="mailto:jhudemikev@gmail.com">jhudemikev@gmail.com</a>
-    &nbsp; · &nbsp;
-    +63 951 875 7753
-    &nbsp; · &nbsp;
-    Caloocan, Philippines
+<!-- ============ BEYOND DAY 90 ============ -->
+<section class="beyond-section" id="beyond">
+  <div class="beyond-inner">
+    <div class="eyebrow reveal" style="justify-content: center;">A Long-Term View</div>
+    <p class="beyond-text reveal reveal-2">Not a contractor's view.<br><em>An operator's view.</em></p>
+    <p class="beyond-prose reveal reveal-3">By month six, I'd hope to take on more of the operational decision-making — process design, vendor coordination, perhaps light project management on the Dubai side as it scales. By the end of year one, the de facto operations lead for the back office. Freeing the CEO entirely from the running of it.</p>
+    <p class="beyond-prose reveal reveal-4">That is the path I commit to. Not because it is promised. <em>Because it is where the work goes when it is done well.</em></p>
   </div>
-
-  <div class="ornament" style="margin-top: 56px;">· · ·</div>
 </section>
+
+<!-- ============ CLOSING / THE ASK ============ -->
+<section class="closing-section" id="close">
+  <div class="closing-inner">
+    <div class="closing-quote-mark reveal">"</div>
+    <p class="closing-quote reveal reveal-2">You operate as a trusted extension of the business, not just task support.</p>
+    <div class="closing-source reveal reveal-3">— From Your Job Description</div>
+
+    <p class="closing-response reveal reveal-4">Most candidates will read those words and nod.<br><em>I read them and built this.</em></p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<footer class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-eyebrow reveal">A Proposal · Rothmore × Vicentillo · MMXXVI</div>
+    <h2 class="contact-name reveal reveal-2">Jude Mike M. <em>Vicentillo</em></h2>
+    <div class="contact-role reveal reveal-3">Virtual Assistant · Manchester-Ready</div>
+
+    <div class="contact-details reveal reveal-4">
+      <a href="mailto:jhudemikev@gmail.com">jhudemikev@gmail.com</a>
+      <span>+63 951 875 7753</span>
+      <span>Caloocan, Philippines</span>
+    </div>
+
+    <div class="contact-final reveal reveal-5">
+      Thank you for your time. The next step is yours — I am ready to start.
+    </div>
+
+    <div class="contact-seal reveal reveal-5">
+      <div class="contact-seal-initials">JV</div>
+      <div class="contact-seal-year">MMXXVI</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => io.observe(el));
+
+// Reading progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  progressBar.style.width = pct + '%';
+});
+
+// Active scroll dot
+const sections = ['hero','about','research','realities','plan','compare','manifesto','tools','proof','beyond','close'];
+const dots = document.querySelectorAll('.scroll-dot');
+const sectionIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      dots.forEach(d => d.classList.toggle('active', d.dataset.section === id));
+      // Detect dark sections for dot colour
+      const isDark = e.target.classList.contains('dark-section')
+        || e.target.classList.contains('hero')
+        || e.target.classList.contains('manifesto-section')
+        || e.target.classList.contains('beyond-section')
+        || e.target.classList.contains('contact-section')
+        || e.target.classList.contains('plan-intro')
+        || e.target.classList.contains('phase-2');
+      dots.forEach(d => d.classList.toggle('dark', isDark));
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionIO.observe(el);
+});
+</script>
 
 </body>
 </html>
